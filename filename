@@ -1,0 +1,281 @@
+==25604== ---Thread-Announcement------------------------------------------
+==25604== 
+==25604== Thread #4 was created
+==25604==    at 0x49AA122: clone (clone.S:71)
+==25604==    by 0x486F2EB: create_thread (createthread.c:101)
+==25604==    by 0x4870E0F: pthread_create@@GLIBC_2.2.5 (pthread_create.c:817)
+==25604==    by 0x4842917: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x1096CE: ft_philo_init (init.c:38)
+==25604==    by 0x109440: main (main.c:40)
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604== Thread #4: lock order "0x4A80070 before 0x4A800C8" violated
+==25604== 
+==25604== Observed (incorrect) order is: acquisition of lock at 0x4A800C8
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AAA: ft_take_fork (philo.c:38)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604==  followed by a later acquisition of lock at 0x4A80070
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AF3: ft_take_fork (philo.c:45)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604== Required order was established by acquisition of lock at 0x4A80070
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AAA: ft_take_fork (philo.c:38)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604==  followed by a later acquisition of lock at 0x4A800C8
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AF3: ft_take_fork (philo.c:45)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604==  Lock at 0x4A80070 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x10954E: ft_init_fork (init.c:21)
+==25604==    by 0x10966C: ft_philo_init (init.c:37)
+==25604==    by 0x109440: main (main.c:40)
+==25604==  Address 0x4a80070 is 48 bytes inside a block of size 176 alloc'd
+==25604==    at 0x483C893: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109964: ft_var_init (init.c:89)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Block was alloc'd by thread #1
+==25604== 
+==25604==  Lock at 0x4A800C8 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x10954E: ft_init_fork (init.c:21)
+==25604==    by 0x10966C: ft_philo_init (init.c:37)
+==25604==    by 0x109440: main (main.c:40)
+==25604==  Address 0x4a800c8 is 136 bytes inside a block of size 176 alloc'd
+==25604==    at 0x483C893: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109964: ft_var_init (init.c:89)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Block was alloc'd by thread #1
+==25604== 
+==25604== 
+==25604== ---Thread-Announcement------------------------------------------
+==25604== 
+==25604== Thread #2 was created
+==25604==    at 0x49AA122: clone (clone.S:71)
+==25604==    by 0x486F2EB: create_thread (createthread.c:101)
+==25604==    by 0x4870E0F: pthread_create@@GLIBC_2.2.5 (pthread_create.c:817)
+==25604==    by 0x4842917: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x1096CE: ft_philo_init (init.c:38)
+==25604==    by 0x109440: main (main.c:40)
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604== Thread #2: lock order "0x4A800C8 before 0x4A80070" violated
+==25604== 
+==25604== Observed (incorrect) order is: acquisition of lock at 0x4A80070
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AAA: ft_take_fork (philo.c:38)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604==  followed by a later acquisition of lock at 0x4A800C8
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AF3: ft_take_fork (philo.c:45)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604== Required order was established by acquisition of lock at 0x4A800C8
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AAA: ft_take_fork (philo.c:38)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604==  followed by a later acquisition of lock at 0x4A80070
+==25604==    at 0x483FEDF: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109AF3: ft_take_fork (philo.c:45)
+==25604==    by 0x109CAA: ft_philo_life (philo.c:88)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604==  Lock at 0x4A800C8 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x10954E: ft_init_fork (init.c:21)
+==25604==    by 0x10966C: ft_philo_init (init.c:37)
+==25604==    by 0x109440: main (main.c:40)
+==25604==  Address 0x4a800c8 is 136 bytes inside a block of size 176 alloc'd
+==25604==    at 0x483C893: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109964: ft_var_init (init.c:89)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Block was alloc'd by thread #1
+==25604== 
+==25604==  Lock at 0x4A80070 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x10954E: ft_init_fork (init.c:21)
+==25604==    by 0x10966C: ft_philo_init (init.c:37)
+==25604==    by 0x109440: main (main.c:40)
+==25604==  Address 0x4a80070 is 48 bytes inside a block of size 176 alloc'd
+==25604==    at 0x483C893: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109964: ft_var_init (init.c:89)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Block was alloc'd by thread #1
+==25604== 
+==25604== 
+==25604== ---Thread-Announcement------------------------------------------
+==25604== 
+==25604== Thread #8 was created
+==25604==    at 0x49AA122: clone (clone.S:71)
+==25604==    by 0x486F2EB: create_thread (createthread.c:101)
+==25604==    by 0x4870E0F: pthread_create@@GLIBC_2.2.5 (pthread_create.c:817)
+==25604==    by 0x4842917: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109C9E: ft_philo_life (philo.c:87)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604==  Lock at 0x1FFEFFFAC0 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109875: ft_var_init (init.c:78)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Address 0x1ffefffac0 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 
+==25604==  Lock at 0x1FFEFFFAE8 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x10988A: ft_var_init (init.c:79)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Address 0x1ffefffae8 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 
+==25604==  Lock at 0x1FFEFFFB10 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x10989F: ft_var_init (init.c:80)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Address 0x1ffefffb10 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 
+==25604==  Lock at 0x1FFEFFFB38 was first observed
+==25604==    at 0x4843D9D: pthread_mutex_init (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x1098B6: ft_var_init (init.c:81)
+==25604==    by 0x109425: main (main.c:38)
+==25604==  Address 0x1ffefffb38 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 
+==25604== Possible data race during read of size 4 at 0x1FFEFFFAA8 by thread #4
+==25604== Locks held: 1, at address 0x1FFEFFFAC0
+==25604==    at 0x109F08: ft_print_state (pilo_utils.c:71)
+==25604==    by 0x109BE9: ft_philo_eat (philo.c:66)
+==25604==    by 0x109CB6: ft_philo_life (philo.c:89)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604== 
+==25604== This conflicts with a previous write of size 4 by thread #8
+==25604== Locks held: 3, at addresses 0x1FFEFFFAE8 0x1FFEFFFB10 0x1FFEFFFB38
+==25604==    at 0x109D2E: ft_is_dead (pilo_utils.c:22)
+==25604==    by 0x109A63: ft_check_death (philo.c:29)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604==  Address 0x1ffefffaa8 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 
+==25604== ---Thread-Announcement------------------------------------------
+==25604== 
+==25604== Thread #1 is the program's root thread
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604== Thread #1: pthread_mutex_destroy with invalid argument
+==25604==    at 0x483FC96: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109332: ft_destroy (main.c:22)
+==25604==    by 0x10944F: main (main.c:41)
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604== Thread #1: pthread_mutex_destroy with invalid argument
+==25604==    at 0x483FC96: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109363: ft_destroy (main.c:23)
+==25604==    by 0x10944F: main (main.c:41)
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604== Possible data race during read of size 1 at 0x1FFEFFFAF0 by thread #1
+==25604== Locks held: none
+==25604==    at 0x483F99C: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x483FC4A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x1093A3: ft_destroy (main.c:27)
+==25604==    by 0x10944F: main (main.c:41)
+==25604== 
+==25604== This conflicts with a previous write of size 4 by thread #8
+==25604== Locks held: none
+==25604==    at 0x48747D1: __pthread_mutex_unlock_usercnt (pthread_mutex_unlock.c:52)
+==25604==    by 0x48747D1: pthread_mutex_unlock (pthread_mutex_unlock.c:357)
+==25604==    by 0x4840458: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109A83: ft_check_death (philo.c:32)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604==  Address 0x1ffefffaf0 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604== Possible data race during read of size 1 at 0x1FFEFFFB18 by thread #1
+==25604== Locks held: none
+==25604==    at 0x483F99C: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x483FC4A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x1093B3: ft_destroy (main.c:28)
+==25604==    by 0x10944F: main (main.c:41)
+==25604== 
+==25604== This conflicts with a previous write of size 4 by thread #8
+==25604== Locks held: 1, at addresses  (and 1 that can't be shown)
+==25604==    at 0x48747D1: __pthread_mutex_unlock_usercnt (pthread_mutex_unlock.c:52)
+==25604==    by 0x48747D1: pthread_mutex_unlock (pthread_mutex_unlock.c:357)
+==25604==    by 0x4840458: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109A73: ft_check_death (philo.c:31)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604==  Address 0x1ffefffb18 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 
+==25604== ----------------------------------------------------------------
+==25604== 
+==25604== Possible data race during read of size 1 at 0x1FFEFFFB40 by thread #1
+==25604== Locks held: none
+==25604==    at 0x483F99C: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x483FC4A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x1093C5: ft_destroy (main.c:29)
+==25604==    by 0x10944F: main (main.c:41)
+==25604== 
+==25604== This conflicts with a previous write of size 4 by thread #2
+==25604== Locks held: none
+==25604==    at 0x48747D1: __pthread_mutex_unlock_usercnt (pthread_mutex_unlock.c:52)
+==25604==    by 0x48747D1: pthread_mutex_unlock (pthread_mutex_unlock.c:357)
+==25604==    by 0x4840458: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x109D51: ft_is_dead (pilo_utils.c:25)
+==25604==    by 0x109CD3: ft_philo_life (philo.c:80)
+==25604==    by 0x4842B1A: ??? (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_helgrind-amd64-linux.so)
+==25604==    by 0x4870608: start_thread (pthread_create.c:477)
+==25604==    by 0x49AA132: clone (clone.S:95)
+==25604==  Address 0x1ffefffb40 is on thread #1's stack
+==25604==  in frame #3, created by main (main.c:33)
+==25604== 

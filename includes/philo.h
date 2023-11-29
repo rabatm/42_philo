@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/29 16:55:43 by mrabat            #+#    #+#             */
+/*   Updated: 2023/11/29 19:16:47 by mrabat           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -8,9 +20,10 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <pthread.h>
 
-typedef	pthread_mutex_t	t_mtx;
-typedef struct s_prog 	t_prog;
+typedef pthread_mutex_t	t_mtx;
+typedef struct s_prog	t_prog;
 
 typedef struct s_pilo
 {

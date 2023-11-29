@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/29 16:55:59 by mrabat            #+#    #+#             */
+/*   Updated: 2023/11/29 19:19:50 by mrabat           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 void	ft_init_fork(t_prog *myprog, int i)
@@ -6,7 +18,6 @@ void	ft_init_fork(t_prog *myprog, int i)
 		myprog->philous[i].pilo_fork_r = &myprog->philous[0].pilo_myfork_l;
 	else
 		myprog->philous[i].pilo_fork_r = &myprog->philous[i + 1].pilo_myfork_l;
-	pthread_mutex_init(&(myprog->philous[i].pilo_myfork_l), NULL);
 }
 
 int	ft_philo_init(t_prog *myprog)
@@ -14,6 +25,9 @@ int	ft_philo_init(t_prog *myprog)
 	int	i;
 
 	myprog->start_time = ft_get_timestamp();
+	i = 0;
+	while (myprog->nop > i)
+		pthread_mutex_init(&(myprog->philous[i++].pilo_myfork_l), NULL);
 	i = -1;
 	while (myprog->nop > ++i)
 	{
@@ -54,6 +68,7 @@ int	ft_is_number(char **str)
 	return (0);
 }
 
+
 int	ft_var_init(t_prog *myprog, char **av)
 {
 	if (av[5] && av[5] == 0)
@@ -68,15 +83,15 @@ int	ft_var_init(t_prog *myprog, char **av)
 	pthread_mutex_init(&myprog->mx_eat, NULL);
 	pthread_mutex_init(&myprog->mx_dead, NULL);
 	myprog->prog_end = 0;
-	myprog->philous = malloc(sizeof(t_pilo) * myprog->nop);
-	if (myprog->philous == NULL)
-		return (2);
 	myprog->philo_eat = 0;
 	myprog->nop = ft_atoi(av[1]);
 	myprog->ttd = ft_atoi(av[2]);
 	myprog->tte = ft_atoi(av[3]);
 	myprog->tts = ft_atoi(av[4]);
 	myprog->nb_eat = -1;
+	myprog->philous = malloc(sizeof(t_pilo) * myprog->nop);
+	if (myprog->philous == NULL)
+		return (2);
 	if (av[5])
 		myprog->nb_eat = ft_atoi(av[5]);
 	return (0);

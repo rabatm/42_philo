@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/29 16:56:06 by mrabat            #+#    #+#             */
+/*   Updated: 2023/11/29 18:45:04 by mrabat           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 void	ft_destroy(t_prog *myprog)
@@ -6,10 +18,7 @@ void	ft_destroy(t_prog *myprog)
 
 	i = -1;
 	while (++i < myprog->nop)
-	{
-		pthread_mutex_destroy(&myprog->philous[i].pilo_myfork_l);
-		pthread_mutex_destroy(myprog->philous[i].pilo_fork_r);
-	}
+		pthread_mutex_destroy(&(myprog->philous[i].pilo_myfork_l));
 	free(myprog->philous);
 	pthread_mutex_destroy(&myprog->mx_write);
 	pthread_mutex_destroy(&myprog->mx_stop);
