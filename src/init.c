@@ -24,7 +24,7 @@ int	ft_philo_init(t_prog *myprog)
 		myprog->philous[i].m_count = 0;
 		ft_init_fork(myprog, i);
 		if (pthread_create(&myprog->philous[i].pilo_thread, NULL, \
-				&philo_life, &(myprog->philous[i])) != 0)
+				&ft_philo_life, &(myprog->philous[i])) != 0)
 			return (-1);
 	}
 	i = -1;
@@ -76,6 +76,7 @@ int	ft_var_init(t_prog *myprog, char **av)
 	myprog->ttd = ft_atoi(av[2]);
 	myprog->tte = ft_atoi(av[3]);
 	myprog->tts = ft_atoi(av[4]);
+	myprog->nb_eat = -1;
 	if (av[5])
 		myprog->nb_eat = ft_atoi(av[5]);
 	return (0);

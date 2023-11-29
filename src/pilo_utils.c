@@ -1,6 +1,6 @@
 #include "../includes/philo.h"
 
-int	ft_get_is_dead(t_pilo *philo, int nb)
+int	ft_is_dead(t_pilo *philo, int nb)
 {
 	t_prog		*myprog;
 	
@@ -34,16 +34,31 @@ void	ft_usleep(int ms)
 		usleep(ms / 10);
 }
 
-void	ft_print_state(t_pilo *myphilo, char *str)
+void	ft_set_i_full(t_pilo *philo)
+{
+	t_prog		*myprog;
+
+	myprog = philo->pilo_info;
+	pthread_mutex_lock(&myprog->mx_stop);
+	if (++myprog->philo_eat == myprog->nop)
+	{
+		pthread_mutex_unlock(&myprog->mx_stop);
+		ft_is_dead(philo, 2);
+	}
+	pthread_mutex_unlock(&myprog->mx_stop);
+
+}
+
+void	ft_print_state(t_pilo *philo, char *str)
 {
 	long int	time;
 	t_prog		*myprog;
 	
-	myprog = myphilo->pilo_info;
+	myprog = philo->pilo_info;
 	pthread_mutex_lock(&(myprog->mx_write));
 	time = ft_get_timestamp() - myprog->start_time;
 	if (!myprog->prog_end && time >= 0 \
-			&& time <= INT_MAX && !ft_get_is_dead(myphilo, 0))
-		printf("%lld %d %s", ft_get_timestamp() - myprog->start_time, myphilo->pilo_num, str);
+			&& time <= INT_MAX && !ft_is_dead(philo, 0))
+		printf("%lld %d %s", ft_get_timestamp() - myprog->start_time, philo->pilo_num, str);
 	pthread_mutex_unlock(&(myprog->mx_write));
 }

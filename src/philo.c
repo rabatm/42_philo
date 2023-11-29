@@ -10,13 +10,13 @@ void	*ft_check_death(void *phi)
 	ft_usleep(myprog->ttd + 1);
 	pthread_mutex_lock(&myprog->mx_eat);
 	pthread_mutex_lock(&myprog->mx_stop);
-	if (!ft_get_is_dead(philo, 0) && ft_get_timestamp() - \
+	if (!ft_is_dead(philo, 0) && ft_get_timestamp() - \
 			philo->pilo_last_e >= (long)(myprog->ttd))
 	{
 		pthread_mutex_unlock(&myprog->mx_eat);
 		pthread_mutex_unlock(&myprog->mx_stop);
 		ft_print_state(philo, " died\n");
-		ft_get_is_dead(philo, 1);
+		ft_is_dead(philo, 1);
 	}
 	pthread_mutex_unlock(&myprog->mx_eat);
 	pthread_mutex_unlock(&myprog->mx_stop);
@@ -49,12 +49,15 @@ void	ft_philo_eat(t_pilo *philo)
 	ft_usleep(myprog->tte);
 	pthread_mutex_unlock((philo->pilo_fork_r));
 	pthread_mutex_unlock(&(philo->pilo_myfork_l));
-	ft_print_state(philo, " is sleeping\n");
-	ft_usleep(myprog->tts);
-	ft_print_state(philo, " is thinking\n");
+	if (philo->m_count != myprog->nb_eat)
+	{
+		ft_print_state(philo, " is sleeping\n");
+		ft_usleep(myprog->tts);
+		ft_print_state(philo, " is thinking\n");
+	}
 }
 
-void	*philo_life(void *phi)
+void	*ft_philo_life(void *phi)
 {
 	t_pilo		*philo;
 	t_prog		*myprog;
@@ -64,17 +67,11 @@ void	*philo_life(void *phi)
 	myprog = philo->pilo_info;
 	if (philo->pilo_num % 2 == 0)
 		ft_usleep(myprog->tte / 10);
-	while (!ft_get_is_dead(philo, 0))
+	while (!ft_is_dead(philo, 0))
 	{
 		if (philo->m_count == myprog->nb_eat)
 		{
-			pthread_mutex_lock(&myprog->mx_stop);
-			if (++myprog->philo_eat == myprog->nop)
-			{
-				pthread_mutex_unlock(&myprog->mx_stop);
-				ft_get_is_dead(philo, 2);
-			}
-			pthread_mutex_unlock(&myprog->mx_stop);
+			ft_set_i_full(philo);
 			return (NULL);
 		}
 		pthread_create(&my_t, NULL, ft_check_death, phi);

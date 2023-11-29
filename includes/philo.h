@@ -43,10 +43,10 @@ typedef struct s_prog
 
 int			ft_var_init(t_prog *data, char **av);
 int			ft_philo_init(t_prog *data);
-void		*philo_life(void *philo);
-void		*philo_life(void *phi);
+void		*ft_philo_life(void *phi);
+void		ft_set_i_full(t_pilo *philo);
 void		ft_print_state(t_pilo *myphilo, char *str);
-int			ft_get_is_dead(t_pilo *philo, int nb);
+int			ft_is_dead(t_pilo *philo, int nb);
 int			ft_isdigit(int character);
 int			ft_atoi(const char *str);
 void		ft_usleep(int ms);
