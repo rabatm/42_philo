@@ -6,7 +6,7 @@
 /*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:56:09 by mrabat            #+#    #+#             */
-/*   Updated: 2023/11/29 19:26:40 by mrabat           ###   ########.fr       */
+/*   Updated: 2023/11/30 13:23:17 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,22 @@ void	*ft_check_death(void *phi)
 {
 	t_pilo	*philo;
 	t_prog	*myprog;
-	int		i;
 
 	philo = (t_pilo *)phi;
 	myprog = philo->pilo_info;
-	while(!myprog->prog_end)
+	while (!ft_is_dead(philo, 0))
 	{
-		i = 0;
-		while (myprog->nop > i)
+		ft_usleep(myprog->ttd);
+		pthread_mutex_lock(&myprog->mx_eat);
+		pthread_mutex_lock(&myprog->mx_stop);
+		if (!ft_is_dead(philo, 0) && ft_get_timestamp() - \
+			philo->pilo_last_e >= (long)(myprog->ttd))
 		{
-			ft_usleep(myprog->ttd);
-			pthread_mutex_lock(&myprog->mx_eat);
-			pthread_mutex_lock(&myprog->mx_stop);
-			if (!ft_is_dead(philo[i], 0) && ft_get_timestamp() - \
-				philo[i]->pilo_last_e >= (long)(myprog->ttd))
-			{
-				ft_print_state(philo[i], " died\n");
-				ft_is_dead(philo[i], 1);
-			}
-			pthread_mutex_unlock(&myprog->mx_eat);
-			pthread_mutex_unlock(&myprog->mx_stop);
+			ft_print_state(philo, " died\n");
+			ft_is_dead(philo, 1);
 		}
+		pthread_mutex_unlock(&myprog->mx_eat);
+		pthread_mutex_unlock(&myprog->mx_stop);
 	}
 	return (NULL);
 }
@@ -91,17 +86,17 @@ void	*ft_philo_life(void *phi)
 
 	philo = (t_pilo *)phi;
 	myprog = philo->pilo_info;
+	pthread_create(&my_t, NULL, ft_check_death, phi);
 	while (!ft_is_dead(philo, 0))
 	{
-		pthread_create(&my_t, NULL, ft_check_death, phi);
 		if (!ft_take_fork(philo))
 			ft_philo_eat(philo);
-		pthread_join(my_t, NULL);
 		if (philo->m_count == myprog->nb_eat)
 		{
 			ft_set_i_full(philo);
 			return (NULL);
 		}
 	}
+	pthread_join(my_t, NULL);
 	return (NULL);
 }

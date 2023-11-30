@@ -6,7 +6,7 @@
 /*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:55:59 by mrabat            #+#    #+#             */
-/*   Updated: 2023/11/29 19:19:50 by mrabat           ###   ########.fr       */
+/*   Updated: 2023/11/30 13:23:33 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	ft_is_number(char **str)
 	}
 	return (0);
 }
-
 
 int	ft_var_init(t_prog *myprog, char **av)
 {
