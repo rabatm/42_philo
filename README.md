@@ -7,16 +7,15 @@
 ### Objective: 
 Simulate the behavior of philosophers sitting at a round table with a large bowl of spaghetti in the center.
 ### Rules:
-Philosophers can perform three actions: eating, thinking, or sleeping.
-Each philosopher must eat with two forks (one for each hand).
-Philosophers must never be starving.
-The simulation stops when a philosopher dies.
-Each program should have the same options:
-number_of_philosophers: The number of philosophers (also the number of forks).
-time_to_die: Time in milliseconds; if a philosopher doesn’t start eating within this time after their last meal or the beginning of the simulation, they die.
-time_to_eat: Time in milliseconds for a philosopher to eat (while holding both forks).
-time_to_sleep: Time in milliseconds for a philosopher to sleep.
-number_of_times_each_philosopher_must_eat (optional): If specified, the simulation stops when all philosophers have eaten this many times; otherwise, it stops only when a philosopher dies.
+Philosophers can perform three actions: eating, thinking, or sleeping. \
+Each philosopher must eat with two forks (one for each hand). \
+Philosophers must never be starving. \
+The simulation stops when a philosopher dies. \
+options: \
+**number_of_philosophers**: The number of philosophers (also the number of forks). \
+**time_to_die**: Time in milliseconds; if a philosopher doesn’t start eating within this time after their last meal or the beginning of the simulation, they die. \
+**time_to_eat**: Time in milliseconds for a philosopher to eat (while holding both forks). \
+**time_to_sleep**: Time in milliseconds for a philosopher to sleep. \
 
 ### Installation
 Clone the repository:
