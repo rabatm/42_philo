@@ -31,7 +31,7 @@ make philo_one
 ```
 
 ## License
-Minishell is licensed under MIT License. See LICENSE for full details.
+42_philo is licensed under MIT License. See LICENSE for full details.
 
 ## Authors
 rabatm - https://github.com/rabatm
